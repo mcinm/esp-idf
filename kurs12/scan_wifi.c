@@ -65,7 +65,7 @@ void wifi_scan(void)
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_num(&ap_count));
     
     ESP_LOGI(TAG, "Liczba zeskanowanych AP's: %u", ap_count);
-    for (uint8_t i=0; i<ap_count); i++)
+    for (uint8_t i=0; i<ap_count)); i++)
     {
         ESP_LOGI(TAG, "SSID \t\t%s", ap_info[i].ssid);
         ESP_LOGI(TAG, "RSSi \t\t%d", ap_info[i].rssi);
