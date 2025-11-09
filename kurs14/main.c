@@ -101,7 +101,7 @@ void app_main(void)
 
     struct sockaddr_storage source_addr;
     socklen_t socklen = sizeof(source_addr);
-    int len = recvfrom(s, bufor_recv, sizeof(bufor_recv) - 1, 0, (struct sockaddr *)&source_addr, &socklen);
+    int len = recvfrom(s, bufor_recv, sizeof(bufor_recv) - 1, 0, (struct sockaddr *)&source_addr, &socklen); // Oczekiwanie na dane i zapis ich w buforze "bufor_recv"
     if (len < 0) {
         ESP_LOGE(TAG, "Nie odebrano danych: errno %d", errno);
     }
@@ -109,7 +109,7 @@ void app_main(void)
         bufor_recv[len] = 0;
         ESP_LOGI(TAG, "Odebrano %d bajty(ów) od %s", len, (char*)SERVER_IP);
         ESP_LOGI(TAG, "%s", bufor_recv);
-        if (strncmp(bufor_recv, "OK", 2) == 0) {
+        if (strncmp(bufor_recv, "OK", 2) == 0) { // Sprawdzamy czy pierwsze dwa znaki to "OK"
             ESP_LOGI(TAG, "Odbiór poprawny");
         }
     }
