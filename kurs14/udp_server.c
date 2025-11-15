@@ -67,6 +67,7 @@ vTaskDelay(4000 / portTICK_PERIOD_MS);
     printf("Hello world!\n");
 
     char bufor_rx[128];
+	char client_addr[128];
     struct sockaddr_in serverAddress;
     serverAddress.sin_addr.s_addr = INADDR_ANY;
     serverAddress.sin_family = AF_INET;
@@ -104,8 +105,10 @@ vTaskDelay(4000 / portTICK_PERIOD_MS);
         }
 
         else {
+			inet_ntoa_r(((struct sockaddr_in *)&source_addr)->sin_addr, client_addr, sizeof(client_addr)-1);
             bufor_rx[len] = 0;
-            ESP_LOGI(TAG, "Odebrane %d bajtów.", len);
+			
+            ESP_LOGI(TAG, "Odebrane %d bajtów od: %s.", len, client_addr);
             ESP_LOGI(TAG, "Odebrana wiadomość: %s", bufor_rx);
 		}
 	}
