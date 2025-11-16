@@ -63,8 +63,8 @@ void wifi_init(void)
 void app_main(void)
 {
 	wifi_init();
-vTaskDelay(4000 / portTICK_PERIOD_MS);
-    printf("Hello world!\n");
+    printf("MCIN - UDP Server!\n");
+	sleep(5); // Dajmy czas na nawiązanie połączenia z wifi
 
     char bufor_rx[128];
 	char client_addr[128];
