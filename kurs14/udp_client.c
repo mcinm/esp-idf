@@ -65,6 +65,7 @@ void app_main(void)
 {
     wifi_init();
     printf("MCINM - esp32 UDP Client\n");
+    sleep(5); // Dajmy czas na nawiązanie połączenia z wifi
     
     
     struct sockaddr_in conn_config;
